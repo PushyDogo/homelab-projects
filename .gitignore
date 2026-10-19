@@ -1,0 +1,24 @@
+# Repo-wide ignores. Project-specific rules live in each project's own .gitignore.
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Python
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node / Cloudflare
+node_modules/
+.wrangler/
