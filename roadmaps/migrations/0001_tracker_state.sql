@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS tracker_state (
+  id TEXT PRIMARY KEY,
+  state_json TEXT NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

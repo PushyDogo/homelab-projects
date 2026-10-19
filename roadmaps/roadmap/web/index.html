@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Engineering Roadmap</title>
+  <!-- Set the theme before first paint so a saved light/dark choice never flashes. -->
+  <script>
+    (function () {
+      var t = 'auto';
+      try { t = localStorage.getItem('ai-roadmap-theme') || 'auto'; } catch (e) {}
+      var dark = t === 'dark' || (t === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header" id="header"></header>
+
+  <div class="shell">
+    <nav class="sidebar" id="sidebar" aria-label="Stages"></nav>
+    <main class="main" id="main"></main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Content: one file per stage, in display order. No libraries, no build step:
+       Cloudflare Pages serves these files as they are. -->
+  <script src="data/00-meta.js"></script>
+  <script src="data/10-orientation.js"></script>
+  <script src="data/20-foundations.js"></script>
+  <script src="data/30-build.js"></script>
+  <script src="data/40-run.js"></script>
+  <script src="data/50-platform.js"></script>
+  <script src="data/60-internals.js"></script>
+  <script src="data/70-capstones.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

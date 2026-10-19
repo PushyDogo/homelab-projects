@@ -1,0 +1,9 @@
+name = "roadmap-tracker"
+pages_build_output_dir = "roadmap/web"
+compatibility_date = "2025-12-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "roadmap-tracker-db"
+database_id = "b49fc7b8-d764-4dcb-9e4b-ef04b6df719c"
+preview_database_id = "roadmap-tracker-db"

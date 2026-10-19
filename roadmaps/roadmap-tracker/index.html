@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI & MLOps Engineering Roadmaps</title>
+
+  <!-- Tailwind CSS via CDN (Play CDN — includes JIT, no build step needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'gray-750': '#2d3748',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom scrollbar for light theme */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #d1d5db #f9fafb;
+    }
+    *::-webkit-scrollbar { width: 6px; }
+    *::-webkit-scrollbar-track { background: #f9fafb; }
+    *::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 3px; }
+    *::-webkit-scrollbar-thumb:hover { background-color: #9ca3af; }
+
+    /* Smooth panel transition */
+    #detail-panel {
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Prevent FOUC */
+    body { background-color: #f9fafb; }
+
+    /* Hover brightness for node cards */
+    .node-card:hover { filter: brightness(1.08); }
+
+    /* Prevent text selection on node cards */
+    .node-card { -webkit-user-select: none; user-select: none; }
+
+    /* Textarea focus ring */
+    textarea:focus { box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3); }
+
+    /* Mobile panel backdrop */
+    #panel-backdrop {
+      transition: opacity 0.28s ease;
+    }
+
+    /* Fade for notes-saved */
+    #notes-saved {
+      transition: opacity 0.4s ease;
+    }
+  </style>
+</head>
+<body class="h-full bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 px-4 py-3">
+    <div id="top-nav" class="max-w-5xl mx-auto">
+      <!-- Rendered by app.js -->
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="max-w-5xl mx-auto flex relative min-h-[calc(100vh-57px)]">
+
+    <!-- Roadmap Column -->
+    <main class="flex-1 px-4 py-8 min-w-0 transition-all duration-300" id="main-content">
+      <!-- Hero Section — rendered by app.js so it reflects the active roadmap -->
+      <div id="hero" class="mb-8"></div>
+
+      <!-- Roadmap Phases — rendered by app.js -->
+      <div id="roadmap-container">
+        <!-- Loading state -->
+        <div class="flex items-center gap-3 text-gray-500 py-8">
+          <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+          </svg>
+          Loading roadmap…
+        </div>
+      </div>
+    </main>
+
+    <!-- Mobile backdrop -->
+    <div
+      id="panel-backdrop"
+      class="fixed inset-0 bg-black/60 z-40 hidden md:hidden"
+      onclick="closePanel()"
+    ></div>
+
+    <!-- Detail Panel -->
+    <aside
+      id="detail-panel"
+      class="fixed right-0 top-[57px] bottom-0 w-full md:w-[420px] z-50 bg-white border-l border-gray-200 translate-x-full shadow-2xl"
+    >
+      <div id="detail-panel-content" class="h-full">
+        <!-- Rendered when a node is selected -->
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 py-4 mt-4">
+    <div class="max-w-5xl mx-auto px-4 flex items-center justify-between flex-wrap gap-2">
+      <p class="text-xs text-gray-400">Progress saved locally in your browser · <a href="Study.md" class="text-gray-500 hover:text-gray-700 transition-colors">View Study.md</a></p>
+      <p class="text-xs text-gray-400">AI & MLOps Engineering · 2026</p>
+    </div>
+  </footer>
+
+  <!-- Data and App scripts -->
+  <script src="data.js"></script>
+  <script src="data-senior-devops.js"></script>
+  <script>
+    // Register all roadmaps here in display order (becomes the tab order)
+    window.ROADMAPS = [window.ROADMAP_DATA_AI, window.ROADMAP_DATA_DEVOPS];
+  </script>
+  <script src="app.js"></script>
+
+  <!-- Mobile panel backdrop toggle -->
+  <script>
+    // Show/hide backdrop on mobile when panel opens/closes
+    const _origSelectNode = window.selectNode;
+    window.selectNode = function(nodeId) {
+      _origSelectNode(nodeId);
+      if (window.innerWidth < 768) {
+        document.getElementById('panel-backdrop').classList.remove('hidden');
+      }
+    };
+    const _origClosePanel = window.closePanel;
+    window.closePanel = function() {
+      _origClosePanel();
+      document.getElementById('panel-backdrop').classList.add('hidden');
+    };
+  </script>
+</body>
+</html>

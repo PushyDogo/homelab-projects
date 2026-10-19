@@ -1,0 +1,19 @@
+KnowDis AI is looking for a DevOps / ML Engineer who sits at the crossroads of infrastructure, backend development, and machine learning operations. You won’t be building ML models from scratch—but you’ll need a solid understanding of ML algorithms and pipelines to design, deploy, and maintain the systems that power them. Think of this as an MLOps-flavoured backend role: you’ll build CI/CD pipelines, debug ML pipeline failures, propose automation solutions, and keep our production ML systems running smoothly.
+
+What you'll do
+Design, build, and continuously improve CI/CD pipelines for both traditional backend services and ML workloads.
+Debug and resolve issues across ML pipelines—from data ingestion to model serving—working closely with the data science team.
+Develop and maintain Python-based backend services and tooling that support our ML infrastructure.
+Propose and implement MLOps automation solutions: model versioning, experiment tracking, automated retraining, monitoring.
+Manage cloud infrastructure (AWS/GCP/Azure), container orchestration (Docker, Kubernetes), and IaC tools (Terraform, Pulumi).
+Monitor production systems, set up alerting, and ensure high availability of ML-powered features.
+Collaborate with data scientists and backend engineers in an agile environment to ship reliable, scalable systems.
+What you'll need
+2+ years of experience in DevOps, backend engineering, or MLOps roles.
+Strong Python skills—you can write production-grade backend code, not just scripts.
+Solid understanding of ML algorithms and workflows (training, evaluation, deployment)—enough to debug pipeline issues and have informed conversations with data scientists.
+Hands-on experience designing and maintaining CI/CD pipelines (GitHub Actions, GitLab CI, Jenkins, or similar).
+Experience with containerization (Docker) and orchestration (Kubernetes).
+Familiarity with ML tooling: MLflow, Kubeflow, Airflow, DVC, or equivalent.
+A proactive, ownership-driven mindset: you identify bottlenecks and propose solutions before being asked.
+Comfort with agile workflows and fast iteration cycles—you thrive in environments where priorities shift and quality still matters.

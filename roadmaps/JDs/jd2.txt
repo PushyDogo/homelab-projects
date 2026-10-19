@@ -1,0 +1,21 @@
+I’m reaching out to share an exciting MLOps Engineer opportunity with kAIgentic, an emerging enterprise AI startup building advanced agentic AI systems for large-scale, real-world applications.
+
+They are looking for someone with strong experience in MLOps / ML platform engineering and Kubernetes, who can help build and scale distributed ML infrastructure.
+
+🔧 Role Overview
+
+In this role, you will:
+
+Own and scale the JARK-stack on AWS EKS (Ray/KubeRay, Kubeflow, MLflow, JupyterHub, Argo/Kueue/Volcano)
+Build end-to-end ML pipelines — data → training → evaluation → deployment
+Enable distributed training across GPU clusters
+Implement model CI/CD and production deployment strategies (canary / blue-green)
+Create self-serve platforms for data scientists
+Monitor and optimize ML workloads (GPU utilization, throughput, etc.)
+🧠 What They’re Looking For
+3–7 years of experience in MLOps / ML platform / infrastructure
+Strong hands-on with Kubernetes (EKS preferred)
+Experience with tools like Ray/KubeRay, Kubeflow, MLflow, Argo/Airflow
+Knowledge of distributed training frameworks (PyTorch DDP, DeepSpeed, etc.)
+Experience in model serving (KServe, Seldon, FastAPI)
+Strong Python engineering skills
