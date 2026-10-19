@@ -1,0 +1,13 @@
+# Runs finance-tracker-sync.service whenever ~/Messages changes, e.g. when Syncthing
+# delivers a new SMS export while you're logged in. Install alongside the service.
+[Unit]
+Description=Finance tracker: sync when a new SMS export arrives
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Path]
+PathChanged=%h/Messages
+Unit=finance-tracker-sync.service
+
+[Install]
+WantedBy=graphical-session.target

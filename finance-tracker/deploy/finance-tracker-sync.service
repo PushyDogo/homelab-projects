@@ -1,0 +1,34 @@
+# One-shot SMS sync: runs at login, and again whenever a file lands in ~/Messages
+# (see finance-tracker-sync.path). Install with:
+#   ln -s "$PWD/deploy/finance-tracker-sync.service" "$PWD/deploy/finance-tracker-sync.path" ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable finance-tracker-sync.service finance-tracker-sync.path
+[Unit]
+Description=Finance tracker: ingest latest SMS export
+# The DB key lives in KWallet, which is only available in the graphical session.
+After=graphical-session.target
+PartOf=graphical-session.target
+# The path unit can fire a few times per export (temp file, rename, old export deleted);
+# repeat runs are cheap because an unchanged export is skipped.
+StartLimitIntervalSec=600
+StartLimitBurst=20
+
+[Service]
+Type=oneshot
+# Runs the venv's entry point directly: no dependency resolution, no network.
+ExecStart=%h/Exosphere/projects/finance-tracker/.venv/bin/finance-tracker sync
+# The keyring may still be locked right after login; retry a few times.
+Restart=on-failure
+RestartSec=30
+# Hardening: read-only system, no network.
+NoNewPrivileges=yes
+PrivateNetwork=yes
+ProtectSystem=strict
+# ProtectSystem alone leaves /home writable in user services; this makes it read-only too.
+ProtectHome=read-only
+# Writes: the DB directory, and the export folder (older exports are deleted).
+ReadWritePaths=%h/.local/share/finance-tracker %h/Messages
+PrivateTmp=yes
+
+[Install]
+WantedBy=graphical-session.target

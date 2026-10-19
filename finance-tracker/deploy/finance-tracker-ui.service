@@ -1,0 +1,31 @@
+# The web UI at http://127.0.0.1:8321, running for as long as you're logged in. Install with:
+#   ln -s "$PWD/deploy/finance-tracker-ui.service" ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now finance-tracker-ui.service
+[Unit]
+Description=Finance tracker: web UI on 127.0.0.1:8321
+# The DB key lives in KWallet, which is only available in the graphical session.
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# Runs the venv's entry point directly: no dependency resolution at start-up.
+ExecStart=%h/Exosphere/projects/finance-tracker/.venv/bin/finance-tracker ui --no-browser
+WorkingDirectory=%h/.local/share/finance-tracker
+Restart=on-failure
+RestartSec=5
+# Hardening. Unlike the sync, the UI needs outbound HTTPS for Zerodha refreshes
+# (api.kite.trade, only when you click Connect/Refresh), so networking is limited to
+# ordinary sockets rather than removed; the server itself listens on 127.0.0.1 only.
+NoNewPrivileges=yes
+ProtectSystem=strict
+# ProtectSystem alone leaves /home writable in user services; this makes it read-only too.
+ProtectHome=read-only
+# Writes: only the DB directory (PPF entries, FD corrections, budgets, settings, snapshots).
+ReadWritePaths=%h/.local/share/finance-tracker
+PrivateTmp=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=graphical-session.target
