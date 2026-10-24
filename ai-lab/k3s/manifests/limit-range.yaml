@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: ailab-limits
+  namespace: ai-lab
+spec:
+  limits:
+  - type: Container
+    defaultRequest:
+      cpu: 500m
+      memory: 512Mi
+    default:
+      cpu: 1
+      memory: 512Mi
+    max:
+      cpu: 4
+      memory: 6Gi

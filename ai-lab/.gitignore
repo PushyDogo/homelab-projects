@@ -1,0 +1,31 @@
+# ai-lab specific ignores (repo-wide rules live in ../.gitignore)
+
+# Python build / tooling
+build/
+dist/
+*.egg-info/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models, datasets, experiment outputs (too big / not source)
+models/
+data/
+checkpoints/
+runs/
+wandb/
+mlruns/
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Credentials that can sneak into k3s work
+kubeconfig*
+*.pem
+*.key
