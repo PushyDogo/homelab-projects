@@ -29,3 +29,10 @@ mlruns/
 kubeconfig*
 *.pem
 *.key
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
